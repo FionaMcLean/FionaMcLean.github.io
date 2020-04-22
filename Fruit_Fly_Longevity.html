@@ -13,7 +13,7 @@
 <meta name="author" content="Fiona McLean" />
 
 
-<title>An Analysis of Differences in Math Achievement between School and Students</title>
+<title>Fruit Fly Longevity</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -282,17 +282,20 @@ $(document).ready(function () {
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Data Visulizations</li>
+    <li class="dropdown-header">Heading 1</li>
     <li>
-      <a href="Fruit_Fly_Longevity.html">COVID-19 NY State</a>
+      <a href="Fruit_Fly_Longevity.html">Page A</a>
     </li>
     <li>
       <a href="page-b.html">Page B</a>
     </li>
     <li class="divider"></li>
-    <li class="dropdown-header">Analysis</li>
+    <li class="dropdown-header">Heading 2</li>
     <li>
-      <a href="Math_Scores.html">Page D</a>
+      <a href="page-c.html">Page C</a>
+    </li>
+    <li>
+      <a href="page-d.html">Page D</a>
     </li>
   </ul>
 </li>
@@ -302,19 +305,19 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="mcleanfionaa@gmail.com">
+  <a href="contact.html">
     <span class="fa fa-envelope fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="http://github.com/fionamclean">
+  <a href="http://github.com/zabore">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="https://www.linkedin.com/in/fiona-mclean-0b9b3a128/">
+  <a href="https://www.linkedin.com/in/emily-zabor-59b902b7/">
     <span class="fa fa-linkedin fa-lg"></span>
      
   </a>
@@ -328,41 +331,50 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">An Analysis of Differences in Math Achievement between School and Students</h1>
+<h1 class="title toc-ignore">Fruit Fly Longevity</h1>
 <h4 class="author">Fiona McLean</h4>
 
 </div>
 
 
-<p>The quality of mathematical education is of high concern to parents, students, teachers and governments. Determining the differences in a quality mathematical education between schools is important as parents try to decide which schools are best to send their children, governments look to understand which schools are performing best and why, and secondary schools try to to determine how they perform compared to others. However, the notion of a “better” school as the most important factor to high test scores is not clear. There is a question of how significant variation of test scores is within schools, compared to the variation of test scores between students in a school. To answer this question, we will investigate if there exist substantial differences between schools, or if differences within schools are nearly as big as differences between students from different schools.</p>
-<p>To answer this question, 7185 students were observed from 160 different schools. Their achievement in mathematics was measured, as well as other factors such as minority status and socio-economic status, which are both known to effect mathematical achievement. We will consider some graphs below to get some intuition about the data.</p>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<p>One hundred twenty-five fruit flies were divided randomly into five groups of 25 each to better understand what effects longevity in fruit flies. One group was kept solitary, while another was kept individually with a virgin female each day. Another group was given eight virgin females per day. As an additional control the fourth and fifth groups were kept with one or eight pregnant females per day (pregnant fruit flies will not mate). The thorax length of each male was measured as this was known to affect lifetime. It was determined that flies who are sexually active have a significant decrease in longevity. Male fruit flies kept with eight virgin females have the lowest longevity compared to isolated flies. Flies kept with one virgin female have a higher longevity compared to the flies kept with eight virgins, but still have a statistically significant lower expected lifespan than isolated flies. There does not appear to be an affect on longevity for flies kept with pregnant females. Thorax length was also found to be a significant indicator of longevity. Flies with a longer thorax live longer in general.</p>
+</div>
+<div id="the-analysis" class="section level2">
+<h2>The Analysis</h2>
+<p>The graph below suggests that longevity may be effected by thorax length and sexual activity. It appears that shorter thorax length results in earlier death. It also appears that the mean longevity is shorter than average for flies in the high and low sexual activity group.</p>
 <div class="figure" style="text-align: center">
-<img src="Math_Scores_files/figure-html/unnamed-chunk-1-1.png" alt="Each black dot in the graph above corresponds to the standard deviation of test scores within a single school. The red line is the standard deviation of the average test score across all schools. This graph shows that the standard deviation of test scores within each school are higher than the standard deviation of test scores across schools. This leads us to believe that student differences within schools may be greater than differences across schools." width="672" />
+<img src="Fruit_Fly_Longevity_files/figure-html/unnamed-chunk-1-1.png" alt="The graph above shows the longevity of fruit flies in each sexual category, as well as their respective thorax length. The yellow dot refers to the mean longevity in the group." width="80%" height="80%" />
 <p class="caption">
-Each black dot in the graph above corresponds to the standard deviation of test scores within a single school. The red line is the standard deviation of the average test score across all schools. This graph shows that the standard deviation of test scores within each school are higher than the standard deviation of test scores across schools. This leads us to believe that student differences within schools may be greater than differences across schools.
+The graph above shows the longevity of fruit flies in each sexual category, as well as their respective thorax length. The yellow dot refers to the mean longevity in the group.
 </p>
 </div>
-<p>The four top scoring schools and four lowest scoring schools are shown below.</p>
+<p>A gamma generalized linear model was used to model the lifetimes as a function of thorax length and sexual activity, to determine what factors have a statistically significant effect on lifetime of a fruit fly. Thorax length was centered around the mean to improve interpretability of the model. The baseline for sexual activity was set to isolated.</p>
+<p>We first determine if a gamma model is appropriate for modelling the data. We do so by observing how well the gamma distribution fits the fruit fly data.</p>
 <div class="figure" style="text-align: center">
-<img src="Math_Scores_files/figure-html/unnamed-chunk-2-1.png" alt="We can see in the graph above that the average test score in the highest and lowest scoring schools are 15.5 points apart. However, the graph also shows that there exists great variation within some schools, for example, test scores in school 6469 are as low as 8 and as high as 22, giving us a 14 point variation within one school. This is further evidence that score variation within school may be greater than score variation across schools." width="672" />
+<img src="Fruit_Fly_Longevity_files/figure-html/unnamed-chunk-3-1.png" alt="The graphs below are used to determine if the Gamma model is appropriate for the data. The bar chart is the distribution of the data in each sexual activtiy category, and the red line is the corresponding gamma distribution." width="672" />
 <p class="caption">
-We can see in the graph above that the average test score in the highest and lowest scoring schools are 15.5 points apart. However, the graph also shows that there exists great variation within some schools, for example, test scores in school 6469 are as low as 8 and as high as 22, giving us a 14 point variation within one school. This is further evidence that score variation within school may be greater than score variation across schools.
+The graphs below are used to determine if the Gamma model is appropriate for the data. The bar chart is the distribution of the data in each sexual activtiy category, and the red line is the corresponding gamma distribution.
 </p>
 </div>
-<p>A linear mixed model was used to determine if there are substantial differences between schools, or if differences within schools are nearly as big as differences between students from different schools. Minority status and socio-economic status are fixed effects, while school is a random effect. School is considered a random effect since it is reasonable to believe that all schools follow the same underlying distribution.</p>
-<p>The model is:</p>
-<p><span class="math inline">\(Y_{ij}|U_{i} \sim N(\mu_{ij},\tau^2)\)</span><br />
-<span class="math inline">\(\mu_{ij} = X_{ij}\beta + U_{i}\)</span><br />
-<span class="math inline">\(U_{i} \sim N(0,\sigma^2)\)</span>, where:</p>
+<p>Based on the graphs above, the gamma distribution does not appear to fit the data properly. However, we will proceed with the gamma distribution regardless.</p>
+<p>The gamma distribution is:</p>
+<p><span class="math inline">\(Y \sim \Gamma(\frac{u_{i}}{v},v)\)</span> , where:</p>
 <ul>
-<li><span class="math inline">\(Y_{ij}\)</span> is the test score for the ith individual in the jth school</li>
-<li><span class="math inline">\(X_{ij}\beta\)</span> has an intercept, effects of minority status and socio-economic status</li>
-<li><span class="math inline">\(U_{i}\)</span> is the random effect of school <span class="math inline">\(i\)</span></li>
-<li><span class="math inline">\(\tau^2\)</span> refers to the randomness associated with each observation</li>
+<li><span class="math inline">\(u_{i}\)</span> is expected lifetime</li>
+<li><span class="math inline">\(v\)</span> is the shape parameter, at a value of 28.15</li>
 </ul>
-<p>The output of the model is seen below:</p>
+<p>Leading to the model: <span class="math inline">\(\log(u_{i})=\beta_{0}+\beta_{1}(thorax)+\beta_{2}I_{activity \space one}+ \beta_{3}I_{activity \space low}+\beta_{4}I_{activity \space many}+\beta_{5}I_{activity \space high}\)</span></p>
+<p>The gamma model examines the effect of thorax length and activity on the longevity of a fruit fly. Interactions were not included in the model as it is unlikely that sexual activity is effected by thorax length or vice verse. The addition of interaction terms were also found to not be statistically significant.</p>
+</div>
+<div id="results" class="section level2">
+<h2>Results</h2>
+<p>The output for the gamma model is seen in Table . Thorax length, High Activity (fly being kept with 8 virgin fruit flies), and Low Activity (fly being kept with one virgin fruit fly) were found to be statistically significant at the 5% level. A fly in a high or low sexual activity category is expected to have a statistically significant lower expected lifetime than an isolated fly. Thorax length positively effects lifetime. That is, flies with longer thorax’s tend to live longer.</p>
+<p>Specifically, a one standard deviation increase in thorax length leads to a 22.67% increase in lifespan in isolated flies. An activity low fly at the mean thorax length has a 10.99% decrease in lifespan compared to an isolated fly at the mean thorax length. An activity high fly at the mean thorax length has a 33.94% decrease in expected lifespan compared to an isolated fly at the mean thorax length. The intercept can be interpreted as the expected lifetime of an isolated fly at the mean thorax length is 60.20 days.</p>
+<p>The other coefficients are not interpreted, as they are not significant.</p>
 
-<p>Based on the output from the model, we can determine that there do exist differences between schools as <span class="math inline">\(\sigma\)</span> is 1.98. This means that test scores between schools will differ with standard deviation 1.98. However since <span class="math inline">\(\tau\)</span> is 6.01, which is significantly bigger than <span class="math inline">\(\sigma\)</span>, we can assert that differences within schools are much greater than differences across schools. That is, individual level variation is much greater than school level variation. Two students of the same minority status and socio-economic status in the same school will have a difference of test scores with standard deviation 12.02. Therefore, it is concluded that differences in test scores are more greatly influenced by the differences in students than in schools.</p>
+</div>
 
 
 

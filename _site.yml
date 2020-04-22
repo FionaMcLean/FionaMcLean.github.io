@@ -7,7 +7,7 @@ navbar:
       menu:
         - text: "Heading 1"
         - text: "Page A"
-          href: Math_Scores.html
+          href: Fruit_Fly_Longevity.html
         - text: "Page B"
           href: page-b.html
         - text: "---------"
