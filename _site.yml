@@ -15,7 +15,7 @@ navbar:
         - text: "Fruit Fly Longevity"
           href: Fruit_Fly_Longevity.html  
     - text: "Resume"
-      href: talks.html
+      href: resume.html
   right:
     - icon: fa-envelope fa-lg
       href: contact.html

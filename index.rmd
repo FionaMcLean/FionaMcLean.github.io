@@ -21,7 +21,7 @@ library(htmltools)
 
 <!-- Header -->
 <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
-  <img class="w3-image" src="background.jpeg" alt="Architecture" width="1500" height="800">
+  <img class="w3-image" src="download.jpg" alt="Architecture" width="1500" height="800">
 ```{r, echo=FALSE}
 div(class = "w3-display-middle w3-margin-top w3-center",
  h1(class = "w3-xxlarge w3-text-white",
@@ -103,7 +103,7 @@ div(class = "w3-row-padding",
   
 <!-- Image of location/map -->
 
-```{r}
+```{r, echo=FALSE}
 div(class = "w3-container",
  img(src = "/w3images/map.jpg",
    class = "w3-image",
