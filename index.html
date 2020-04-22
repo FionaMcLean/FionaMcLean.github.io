@@ -275,17 +275,32 @@ $(document).ready(function () {
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
-        <li>
-  <a href="research.html">Writing</a>
+        <li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+    Projects
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li class="dropdown-header">Heading 1</li>
+    <li>
+      <a href="page-a.html">Page A</a>
+    </li>
+    <li>
+      <a href="page-b.html">Page B</a>
+    </li>
+    <li class="divider"></li>
+    <li class="dropdown-header">Heading 2</li>
+    <li>
+      <a href="page-c.html">Page C</a>
+    </li>
+    <li>
+      <a href="page-d.html">Page D</a>
+    </li>
+  </ul>
 </li>
 <li>
-  <a href="talks.html">Speaking</a>
-</li>
-<li>
-  <a href="software.html">Programming</a>
-</li>
-<li>
-  <a href="teaching.html">Teaching</a>
+  <a href="talks.html">Resume</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -298,12 +313,6 @@ $(document).ready(function () {
 <li>
   <a href="http://github.com/zabore">
     <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="https://twitter.com/zabormetrics">
-    <span class="fa fa-twitter fa-lg"></span>
      
   </a>
 </li>
