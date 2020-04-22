@@ -13,7 +13,7 @@
 <meta name="author" content="Fiona McLean" />
 
 
-<title>Untitled</title>
+<title>Fruit Fly Longevity</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -284,10 +284,10 @@ $(document).ready(function () {
   <ul class="dropdown-menu" role="menu">
     <li class="dropdown-header">Analysis</li>
     <li>
-      <a href="UK_Road_Fatalities.html">UK Road Fatalities</a>
+      <a href="page-b.html">Page B</a>
     </li>
     <li>
-      <a href="CO2_WorldEvents.html">World Events Effect on C02</a>
+      <a href="Rehab_Success.html">Rehab Success Rates</a>
     </li>
     <li>
       <a href="Math_Scores.html">Math Scores</a>
@@ -329,14 +329,118 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Untitled</h1>
+<h1 class="title toc-ignore">Fruit Fly Longevity</h1>
 <h4 class="author">Fiona McLean</h4>
-<h4 class="date">4/22/2020</h4>
 
 </div>
 
 
-<p>This is my webpage! It is a work in progress…</p>
+<div id="summary" class="section level2">
+<h2>Summary</h2>
+<p>One hundred twenty-five fruit flies were divided randomly into five groups of 25 each to better understand what effects longevity in fruit flies. One group was kept solitary, while another was kept individually with a virgin female each day. Another group was given eight virgin females per day. As an additional control the fourth and fifth groups were kept with one or eight pregnant females per day (pregnant fruit flies will not mate). The thorax length of each male was measured as this was known to affect lifetime. It was determined that flies who are sexually active have a significant decrease in longevity. Male fruit flies kept with eight virgin females have the lowest longevity compared to isolated flies. Flies kept with one virgin female have a higher longevity compared to the flies kept with eight virgins, but still have a statistically significant lower expected lifespan than isolated flies. There does not appear to be an affect on longevity for flies kept with pregnant females. Thorax length was also found to be a significant indicator of longevity. Flies with a longer thorax live longer in general.</p>
+</div>
+<div id="the-analysis" class="section level2">
+<h2>The Analysis</h2>
+<p>The graph below suggests that longevity may be effected by thorax length and sexual activity. It appears that shorter thorax length results in earlier death. It also appears that the mean longevity is shorter than average for flies in the high and low sexual activity group.</p>
+<div class="figure" style="text-align: center">
+<img src="Fruit_Fly_Longevity_files/figure-html/unnamed-chunk-1-1.png" alt="The graph above shows the longevity of fruit flies in each sexual category, as well as their respective thorax length. The yellow dot refers to the mean longevity in the group." width="80%" height="80%" />
+<p class="caption">
+The graph above shows the longevity of fruit flies in each sexual category, as well as their respective thorax length. The yellow dot refers to the mean longevity in the group.
+</p>
+</div>
+<p>A gamma generalized linear model was used to model the lifetimes as a function of thorax length and sexual activity, to determine what factors have a statistically significant effect on lifetime of a fruit fly. Thorax length was centered around the mean to improve interpretability of the model. The baseline for sexual activity was set to isolated.</p>
+<p>We first determine if a gamma model is appropriate for modelling the data. We do so by observing how well the gamma distribution fits the fruit fly data.</p>
+<div class="figure" style="text-align: center">
+<img src="Fruit_Fly_Longevity_files/figure-html/unnamed-chunk-3-1.png" alt="The graphs below are used to determine if the Gamma model is appropriate for the data. The bar chart is the distribution of the data in each sexual activtiy category, and the red line is the corresponding gamma distribution." width="672" />
+<p class="caption">
+The graphs below are used to determine if the Gamma model is appropriate for the data. The bar chart is the distribution of the data in each sexual activtiy category, and the red line is the corresponding gamma distribution.
+</p>
+</div>
+<p>Based on the graphs above, the gamma distribution does not appear to fit the data properly. However, we will proceed with the gamma distribution regardless.</p>
+<p>The gamma distribution is:</p>
+<p><span class="math inline">\(Y \sim \Gamma(\frac{u_{i}}{v},v)\)</span> , where:</p>
+<ul>
+<li><span class="math inline">\(u_{i}\)</span> is expected lifetime</li>
+<li><span class="math inline">\(v\)</span> is the shape parameter, at a value of 28.15</li>
+</ul>
+<p>Leading to the model: <span class="math inline">\(\log(u_{i})=\beta_{0}+\beta_{1}(thorax)+\beta_{2}I_{activity \space one}+ \beta_{3}I_{activity \space low}+\beta_{4}I_{activity \space many}+\beta_{5}I_{activity \space high}\)</span></p>
+<p>The gamma model examines the effect of thorax length and activity on the longevity of a fruit fly. Interactions were not included in the model as it is unlikely that sexual activity is effected by thorax length or vice verse. The addition of interaction terms were also found to not be statistically significant.</p>
+</div>
+<div id="results" class="section level2">
+<h2>Results</h2>
+<p>The output for the gamma model is seen in Table . Thorax length, High Activity (fly being kept with 8 virgin fruit flies), and Low Activity (fly being kept with one virgin fruit fly) were found to be statistically significant at the 5% level. A fly in a high or low sexual activity category is expected to have a statistically significant lower expected lifetime than an isolated fly. Thorax length positively effects lifetime. That is, flies with longer thorax’s tend to live longer.</p>
+<p>Specifically, a one standard deviation increase in thorax length leads to a 22.67% increase in lifespan in isolated flies. An activity low fly at the mean thorax length has a 10.99% decrease in lifespan compared to an isolated fly at the mean thorax length. An activity high fly at the mean thorax length has a 33.94% decrease in expected lifespan compared to an isolated fly at the mean thorax length. The intercept can be interpreted as the expected lifetime of an isolated fly at the mean thorax length is 60.20 days.</p>
+<p>The other coefficients are not interpreted, as they are not significant.</p>
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Estimate</th>
+<th align="right">Std. Error</th>
+<th align="right">t value</th>
+<th align="right">Pr(&gt;|t|)</th>
+<th align="right">2.5 %</th>
+<th align="right">97.5 %</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>(Intercept)</td>
+<td align="right">4.098</td>
+<td align="right">0.038</td>
+<td align="right">108.333</td>
+<td align="right">0.000</td>
+<td align="right">4.025</td>
+<td align="right">4.173</td>
+</tr>
+<tr class="even">
+<td>thoraxC1</td>
+<td align="right">0.204</td>
+<td align="right">0.017</td>
+<td align="right">11.804</td>
+<td align="right">0.000</td>
+<td align="right">0.170</td>
+<td align="right">0.239</td>
+</tr>
+<tr class="odd">
+<td>activityone</td>
+<td align="right">0.055</td>
+<td align="right">0.053</td>
+<td align="right">1.036</td>
+<td align="right">0.302</td>
+<td align="right">-0.049</td>
+<td align="right">0.160</td>
+</tr>
+<tr class="even">
+<td>activitylow</td>
+<td align="right">-0.116</td>
+<td align="right">0.053</td>
+<td align="right">-2.184</td>
+<td align="right">0.031</td>
+<td align="right">-0.221</td>
+<td align="right">-0.012</td>
+</tr>
+<tr class="odd">
+<td>activitymany</td>
+<td align="right">0.082</td>
+<td align="right">0.054</td>
+<td align="right">1.524</td>
+<td align="right">0.130</td>
+<td align="right">-0.024</td>
+<td align="right">0.189</td>
+</tr>
+<tr class="even">
+<td>activityhigh</td>
+<td align="right">-0.415</td>
+<td align="right">0.054</td>
+<td align="right">-7.687</td>
+<td align="right">0.000</td>
+<td align="right">-0.520</td>
+<td align="right">-0.309</td>
+</tr>
+</tbody>
+</table>
+</div>
 
 
 
