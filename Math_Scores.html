@@ -13,7 +13,7 @@
 <meta name="author" content="Fiona McLean" />
 
 
-<title>Untitled</title>
+<title>An Analysis of Differences in Math Achievement between School and Students</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -292,10 +292,7 @@ $(document).ready(function () {
     <li class="divider"></li>
     <li class="dropdown-header">Analysis</li>
     <li>
-      <a href="/Analysis/Fruit_Fly_Longevity.html">Fruit Fly Longevity</a>
-    </li>
-    <li>
-      <a href="page-d.html">Page D</a>
+      <a href="Math_Scores.html">Page D</a>
     </li>
   </ul>
 </li>
@@ -331,14 +328,41 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Untitled</h1>
+<h1 class="title toc-ignore">An Analysis of Differences in Math Achievement between School and Students</h1>
 <h4 class="author">Fiona McLean</h4>
-<h4 class="date">4/22/2020</h4>
 
 </div>
 
 
-<p>This is my webpage! It is a work in progress…</p>
+<p>The quality of mathematical education is of high concern to parents, students, teachers and governments. Determining the differences in a quality mathematical education between schools is important as parents try to decide which schools are best to send their children, governments look to understand which schools are performing best and why, and secondary schools try to to determine how they perform compared to others. However, the notion of a “better” school as the most important factor to high test scores is not clear. There is a question of how significant variation of test scores is within schools, compared to the variation of test scores between students in a school. To answer this question, we will investigate if there exist substantial differences between schools, or if differences within schools are nearly as big as differences between students from different schools.</p>
+<p>To answer this question, 7185 students were observed from 160 different schools. Their achievement in mathematics was measured, as well as other factors such as minority status and socio-economic status, which are both known to effect mathematical achievement. We will consider some graphs below to get some intuition about the data.</p>
+<div class="figure" style="text-align: center">
+<img src="Math_Scores_files/figure-html/unnamed-chunk-1-1.png" alt="Each black dot in the graph above corresponds to the standard deviation of test scores within a single school. The red line is the standard deviation of the average test score across all schools. This graph shows that the standard deviation of test scores within each school are higher than the standard deviation of test scores across schools. This leads us to believe that student differences within schools may be greater than differences across schools." width="672" />
+<p class="caption">
+Each black dot in the graph above corresponds to the standard deviation of test scores within a single school. The red line is the standard deviation of the average test score across all schools. This graph shows that the standard deviation of test scores within each school are higher than the standard deviation of test scores across schools. This leads us to believe that student differences within schools may be greater than differences across schools.
+</p>
+</div>
+<p>The four top scoring schools and four lowest scoring schools are shown below.</p>
+<div class="figure" style="text-align: center">
+<img src="Math_Scores_files/figure-html/unnamed-chunk-2-1.png" alt="We can see in the graph above that the average test score in the highest and lowest scoring schools are 15.5 points apart. However, the graph also shows that there exists great variation within some schools, for example, test scores in school 6469 are as low as 8 and as high as 22, giving us a 14 point variation within one school. This is further evidence that score variation within school may be greater than score variation across schools." width="672" />
+<p class="caption">
+We can see in the graph above that the average test score in the highest and lowest scoring schools are 15.5 points apart. However, the graph also shows that there exists great variation within some schools, for example, test scores in school 6469 are as low as 8 and as high as 22, giving us a 14 point variation within one school. This is further evidence that score variation within school may be greater than score variation across schools.
+</p>
+</div>
+<p>A linear mixed model was used to determine if there are substantial differences between schools, or if differences within schools are nearly as big as differences between students from different schools. Minority status and socio-economic status are fixed effects, while school is a random effect. School is considered a random effect since it is reasonable to believe that all schools follow the same underlying distribution.</p>
+<p>The model is:</p>
+<p><span class="math inline">\(Y_{ij}|U_{i} \sim N(\mu_{ij},\tau^2)\)</span><br />
+<span class="math inline">\(\mu_{ij} = X_{ij}\beta + U_{i}\)</span><br />
+<span class="math inline">\(U_{i} \sim N(0,\sigma^2)\)</span>, where:</p>
+<ul>
+<li><span class="math inline">\(Y_{ij}\)</span> is the test score for the ith individual in the jth school</li>
+<li><span class="math inline">\(X_{ij}\beta\)</span> has an intercept, effects of minority status and socio-economic status</li>
+<li><span class="math inline">\(U_{i}\)</span> is the random effect of school <span class="math inline">\(i\)</span></li>
+<li><span class="math inline">\(\tau^2\)</span> refers to the randomness associated with each observation</li>
+</ul>
+<p>The output of the model is seen below:</p>
+
+<p>Based on the output from the model, we can determine that there do exist differences between schools as <span class="math inline">\(\sigma\)</span> is 1.98. This means that test scores between schools will differ with standard deviation 1.98. However since <span class="math inline">\(\tau\)</span> is 6.01, which is significantly bigger than <span class="math inline">\(\sigma\)</span>, we can assert that differences within schools are much greater than differences across schools. That is, individual level variation is much greater than school level variation. Two students of the same minority status and socio-economic status in the same school will have a difference of test scores with standard deviation 12.02. Therefore, it is concluded that differences in test scores are more greatly influenced by the differences in students than in schools.</p>
 
 
 
