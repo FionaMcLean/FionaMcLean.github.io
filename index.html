@@ -1,455 +1,181 @@
 <!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-
+<html  >
 <head>
-
-<meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="generator" content="pandoc" />
-<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
-
-
-
-
-<title></title>
-
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/paper.min.css" rel="stylesheet" />
-<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
-<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
-<script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
-<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
-
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
-}
-</script>
-
-
-
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
-
-<link rel="stylesheet" href="styles.css" type="text/css" />
-
-
-
-<style type = "text/css">
-.main-container {
-  max-width: 940px;
-  margin-left: auto;
-  margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
-img {
-  max-width:100%;
-}
-.tabbed-pane {
-  padding-top: 12px;
-}
-.html-widget {
-  margin-bottom: 20px;
-}
-button.code-folding-btn:focus {
-  outline: none;
-}
-summary {
-  display: list-item;
-}
-</style>
-
-
-<style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 64px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 69px;
-  margin-top: -69px;
-}
-.section h2 {
-  padding-top: 69px;
-  margin-top: -69px;
-}
-.section h3 {
-  padding-top: 69px;
-  margin-top: -69px;
-}
-.section h4 {
-  padding-top: 69px;
-  margin-top: -69px;
-}
-.section h5 {
-  padding-top: 69px;
-  margin-top: -69px;
-}
-.section h6 {
-  padding-top: 69px;
-  margin-top: -69px;
-}
-.dropdown-submenu {
-  position: relative;
-}
-.dropdown-submenu>.dropdown-menu {
-  top: 0;
-  left: 100%;
-  margin-top: -6px;
-  margin-left: -1px;
-  border-radius: 0 6px 6px 6px;
-}
-.dropdown-submenu:hover>.dropdown-menu {
-  display: block;
-}
-.dropdown-submenu>a:after {
-  display: block;
-  content: " ";
-  float: right;
-  width: 0;
-  height: 0;
-  border-color: transparent;
-  border-style: solid;
-  border-width: 5px 0 5px 5px;
-  border-left-color: #cccccc;
-  margin-top: 5px;
-  margin-right: -10px;
-}
-.dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
-}
-.dropdown-submenu.pull-left {
-  float: none;
-}
-.dropdown-submenu.pull-left>.dropdown-menu {
-  left: -100%;
-  margin-left: 10px;
-  border-radius: 6px 0 6px 6px;
-}
-</style>
-
-<script>
-// manage active state of menu based on current page
-$(document).ready(function () {
-  // active menu anchor
-  href = window.location.pathname
-  href = href.substr(href.lastIndexOf('/') + 1)
-  if (href === "")
-    href = "index.html";
-  var menuAnchor = $('a[href="' + href + '"]');
-
-  // mark it active
-  menuAnchor.parent().addClass('active');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
-});
-</script>
-
-<!-- tabsets -->
-
-<style type="text/css">
-.tabset-dropdown > .nav-tabs {
-  display: inline-table;
-  max-height: 500px;
-  min-height: 44px;
-  overflow-y: auto;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
-  font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
-}
-
-.tabset-dropdown > .nav-tabs > li.active {
-  display: block;
-}
-
-.tabset-dropdown > .nav-tabs > li > a,
-.tabset-dropdown > .nav-tabs > li > a:focus,
-.tabset-dropdown > .nav-tabs > li > a:hover {
-  border: none;
-  display: inline-block;
-  border-radius: 4px;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
-  display: block;
-  float: none;
-}
-
-.tabset-dropdown > .nav-tabs > li {
-  display: none;
-}
-</style>
-
-<!-- code folding -->
-
-
-
-
+  <!-- Site made with Mobirise Website Builder v4.12.3, https://mobirise.com -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Mobirise v4.12.3, mobirise.com">
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+  <link rel="shortcut icon" href="assets/images/logo2.png" type="image/x-icon">
+  <meta name="description" content="">
+  
+  
+  <title>Home</title>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons-bold/mobirise-icons-bold.css">
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/tether/tether.min.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  
+  
+  
 </head>
-
 <body>
+  <section class="menu cid-qTkzRZLJNu" once="menu" id="menu1-0">
 
+    
 
-<div class="container-fluid main-container">
+    <nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </button>
+        <div class="menu-logo">
+            <div class="navbar-brand">
+                
+                <span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="https://mobirise.com">
+                        Fiona McLean</a></span>
+            </div>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"><li class="nav-item dropdown">
+                    <a class="nav-link link dropdown-toggle text-white display-4" href="page2.html" data-toggle="dropdown-submenu" aria-expanded="false"><span class="mbri-briefcase mbr-iconfont mbr-iconfont-btn"></span>
+                        
+                        My Projects</a><div class="dropdown-menu"><a class="text-white dropdown-item display-4" href="page2.html" aria-expanded="false">COVID-19 Analysis</a><a class="text-white dropdown-item display-4" href="page4.html" aria-expanded="false">World Events CO2</a><a class="dropdown-item text-white display-4" href="page3.html">Math Score Analysis</a><a class="dropdown-item text-white display-4" href="home.html">Fruit-Fly Longevity</a></div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link link text-white display-4" href="page5.html" aria-expanded="false"><span class="mbri-user2 mbr-iconfont mbr-iconfont-btn"></span>
+                        My Resume&nbsp;</a>
+                </li><li class="nav-item"><a class="nav-link link text-white display-4" href="https://www.linkedin.com/in/fiona-mclean-0b9b3a128/" aria-expanded="false" target="_blank"><span class="socicon socicon-linkedin mbr-iconfont mbr-iconfont-btn"></span></a></li><li class="nav-item"><a class="nav-link link text-white display-4" href="https://github.com/FionaMcLean" aria-expanded="false" target="_blank"><span class="mbrib-github mbr-iconfont mbr-iconfont-btn"></span></a></li><li class="nav-item"><a class="nav-link link text-white display-4" href="mailto:mcleanfionaa@gmail.com" aria-expanded="false"><span class="mbrib-letter mbr-iconfont mbr-iconfont-btn"></span></a></li></ul>
+            
+        </div>
+    </nav>
+</section>
 
+<section class="engine"><a href="https://mobirise.info/b">create your own site</a></section><section class="header3 cid-rWZqdxXVRu mbr-fullscreen" id="header3-a">
 
+    
 
-
-<div class="navbar navbar-default  navbar-fixed-top" role="navigation">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="index.html">Fiona McLean</a>
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);">
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-    Projects
+
+    <div class="container">
+        <div class="media-container-row">
+            <div class="mbr-figure" style="width: 75%;">
+                <img src="assets/images/img-3279-856x1141.jpeg" alt="Mobirise" title="">
+            </div>
+
+            <div class="media-content">
+                <h1 class="mbr-section-title mbr-white pb-3 mbr-fonts-style display-1">
+                    Fiona McLean</h1>
+                
+                <div class="mbr-section-text mbr-white pb-3 ">
+                    <p class="mbr-text mbr-fonts-style display-5">
+                        Welcome to my website! I am a graduate from the University of Toronto, with a major in Mathematics and Statistics, and a minor in Economics. Here you'll find some of the projects I have been working on and more about me!
+                    </p>
+                </div>
+                <div class="mbr-section-btn"><a class="btn btn-md btn-white-outline display-4" href="page2.html">My Latest Project</a>
+                    <a class="btn btn-md btn-white-outline display-4" href="page5.html">My Resume</a></div>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section class="mbr-section article content10 cid-rWZrw8cAEt" id="content10-b">
+    
      
-    <span class="caret"></span>
-  </a>
-  <ul class="dropdown-menu" role="menu">
-    <li class="dropdown-header">Analysis</li>
-    <li>
-      <a href="UK_Road_Fatalities.html">UK Road Fatalities</a>
-    </li>
-    <li>
-      <a href="CO2_WorldEvents.html">World Events Effect on C02</a>
-    </li>
-    <li>
-      <a href="Math_Scores.html">Math Scores</a>
-    </li>
-    <li>
-      <a href="Fruit_Fly_Longevity.html">Fruit Fly Longevity</a>
-    </li>
-  </ul>
-</li>
-<li>
-  <a href="resume.html">Resume</a>
-</li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li>
-  <a href="contact.html">
-    <span class="fa fa-envelope fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="http://github.com/fionamclean">
-    <span class="fa fa-github fa-lg"></span>
-     
-  </a>
-</li>
-<li>
-  <a href="https://www.linkedin.com/in/fiona-mclean-0b9b3a128/">
-    <span class="fa fa-linkedin fa-lg"></span>
-     
-  </a>
-</li>
-      </ul>
-    </div><!--/.nav-collapse -->
-  </div><!--/.container -->
-</div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+    <div class="container">
+        <div class="inner-container" style="width: 66%;">
+            <hr class="line" style="width: 25%;">
+            <div class="section-text align-center mbr-white mbr-fonts-style display-5">
+                    This should be a very big and important statement for my website but I dont know what it is yet</div>
+            <hr class="line" style="width: 25%;">
+        </div>
+    </div>
+</section>
 
+<section class="features18 popup-btn-cards cid-rWZrxxCGjP" id="features18-c">
 
+    
 
+    
+    <div class="container">
+        <h2 class="mbr-section-title pb-3 align-center mbr-fonts-style display-2">Check Out My New Projects</h2>
+        <h3 class="mbr-section-subtitle display-5 align-center mbr-fonts-style mbr-light display-4">Click My Projects for More!</h3>
+        <div class="media-container-row pt-5 ">
+            <div class="card p-3 col-12 col-md-6 col-lg-4">
+                <div class="card-wrapper ">
+                    <div class="card-img">
+                        <div class="mbr-overlay"></div>
+                        <div class="mbr-section-btn text-center"><a href="page2.html" class="btn btn-black-outline display-4">Go to Project</a></div>
+                        <img src="assets/images/mbr-3-676x1007.jpeg" alt="Mobirise" title="">
+                    </div>
+                    <div class="card-box">
+                        <h4 class="card-title mbr-fonts-style display-7">COVID-19 Visulatization</h4>
+                        <p class="mbr-text mbr-fonts-style align-left display-7">
+                            I use NYT data to visulize important metrics about the COVID-19 curve for New York State Data.<br><br></p>
+                    </div>
+                </div>
+            </div>
+            <div class="card p-3 col-12 col-md-6 col-lg-4">
+                <div class="card-wrapper">
+                    <div class="card-img">
+                        <div class="mbr-overlay"></div>
+                        <div class="mbr-section-btn text-center"><a href="home.html" class="btn btn-black-outline display-4">Go to Project</a></div>
+                        <img src="assets/images/mbr-676x451.jpeg" alt="Mobirise" title="">
+                    </div>
+                    <div class="card-box">
+                        <h4 class="card-title mbr-fonts-style display-7">
+                            Fruit-Fly Longevity</h4>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                           Fruit Fly Longevity is analyzed to determine what factors effect the lifespan of a fruitfly.<br><br></p>
+                    </div>
+                </div>
+            </div>
 
-</div>
+            <div class="card p-3 col-12 col-md-6 col-lg-4">
+                <div class="card-wrapper">
+                    <div class="card-img">
+                        <div class="mbr-overlay"></div>
+                        <div class="mbr-section-btn text-center"><a href="page3.html" class="btn btn-black-outline display-4">Go to Project</a></div>
+                        <img src="assets/images/mbr-2-676x451.jpeg" alt="Mobirise" title="">
+                    </div>
+                    <div class="card-box">
+                        <h4 class="card-title mbr-fonts-style display-7">Math Scores</h4>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            A data set containing the Math Scores for several students in the UK is analyzed to determine what factos effect student performance.</p>
+                    </div>
+                </div>
+            </div>
 
-
-<!DOCTYPE html>
-<html>
-<title>
-W3.CSS Template
-</title>
-<meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1"> <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<body>
-<!-- Header -->
-<header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
-<p><img class="w3-image" src="download.jpg" alt="Architecture" width="1500" height="800"> <div class="w3-display-middle w3-margin-top w3-center">
-<h1 class="w3-xxlarge w3-text-white">
-<span class="w3-padding w3-black w3-opacity-min">
-<b>FM</b>
-</span>
-<span class="w3-hide-small w3-text-light-grey">Fiona McLean</span>
-</h1>
-</div></p>
-</header>
-<p><div class="w3-container w3-padding-32" id="about">
-<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About Me</h3>
-<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint
-      occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-      laboris nisi ut aliquip ex ea commodo consequat.</p>
-</div><div class="w3-row-padding w3-grayscale">
-<div class="w3-col l3 m6 w3-margin-bottom">
-<img src="/w3images/team2.jpg" alt="John" style="width:100%"/>
-<h3>John Doe</h3>
-<p class="w3-opacity">CEO &amp; Founder</p>
-<p>Phasellus eget enim eu lectus faucibus vestibulum. Suspendisse sodales pellentesque elementum.</p>
-</div>
-</div></p>
-<!-- Page content -->
-<p><div class="w3-content w3-padding" style="max-width:1564px"></div><div class="w3-container w3-padding-32" id="projects">
-<h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Projects</h3>
-</div><div class="w3-row-padding">
-<div class="w3-col l3 m6 w3-margin-bottom">
-<div class="w3-display-container">
-<div class="w3-display-topleft w3-black w3-padding">UK Road Fatalities</div>
-<img src="/w3images/house5.jpg" alt="House" style="width:100%"/>
-</div>
-</div>
-<div class="w3-col l3 m6 w3-margin-bottom">
-<div class="w3-display-container">
-<div class="w3-display-topleft w3-black w3-padding">CO2 World Events</div>
-<img src="/w3images/house2.jpg" alt="House" style="width:100%"/>
-</div>
-</div>
-<div class="w3-col l3 m6 w3-margin-bottom">
-<div class="w3-display-container">
-<div class="w3-display-topleft w3-black w3-padding">Renovated</div>
-<img src="/w3images/house3.jpg" alt="House" style="width:100%"/>
-</div>
-</div>
-<div class="w3-col l3 m6 w3-margin-bottom">
-<div class="w3-display-container">
-<div class="w3-display-topleft w3-black w3-padding">Barn House</div>
-<img src="/w3images/house4.jpg" alt="House" style="width:100%"/>
-</div>
-</div>
-</div></p>
-<!-- Image of location/map -->
-<div class="w3-container">
-<img src="/w3images/map.jpg" class="w3-image" style="width:100%"/>
-</div>
-<!-- Footer -->
-<footer class="w3-center w3-black w3-padding-16">
-<p>
-Powered by
-</p>
-</footer>
-</body>
-</html>
-<p>```</p>
+            
+        </div>
+    </div>
+</section>
 
 
-
-
-</div>
-
-<script>
-
-// add bootstrap table styles to pandoc tables
-function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
-}
-$(document).ready(function () {
-  bootstrapStylePandocTables();
-});
-
-
-</script>
-
-<!-- tabsets -->
-
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
-<!-- code folding -->
-
-
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
-  (function () {
-    var script = document.createElement("script");
-    script.type = "text/javascript";
-    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
-    document.getElementsByTagName("head")[0].appendChild(script);
-  })();
-</script>
-
+  <script src="assets/web/assets/jquery/jquery.min.js"></script>
+  <script src="assets/popper/popper.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/tether/tether.min.js"></script>
+  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+  <script src="assets/mbr-popup-btns/mbr-popup-btns.js"></script>
+  <script src="assets/dropdown/js/nav-dropdown.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  
+  
 </body>
 </html>
